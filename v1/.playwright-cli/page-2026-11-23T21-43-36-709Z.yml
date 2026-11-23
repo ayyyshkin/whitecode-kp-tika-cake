@@ -1,0 +1,686 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "WhiteCode, в начало предложения" [ref=e3] [cursor=pointer]:
+      - /url: "#top"
+      - generic [aria-hidden] [ref=e4]: ×
+      - generic [ref=e5]: Tika Cake
+    - navigation "Разделы предложения" [ref=e6]:
+      - link "Демо" [ref=e7] [cursor=pointer]:
+        - /url: "#s-demo"
+      - link "Состав" [ref=e8] [cursor=pointer]:
+        - /url: "#s-scope"
+      - link "Этапы" [ref=e9] [cursor=pointer]:
+        - /url: "#s-stages"
+      - link "Стоимость" [ref=e10] [cursor=pointer]:
+        - /url: "#s-pricing"
+      - link "Кейсы" [ref=e11] [cursor=pointer]:
+        - /url: "#cases"
+    - link "Оставить заявку" [ref=e12] [cursor=pointer]:
+      - /url: "#request"
+  - main [ref=e14]:
+    - generic [ref=e15]:
+      - paragraph [ref=e16]: Цена действуетдо 7 декабря
+      - heading "Tika Cake принимает заказы без переписки" [level=1] [ref=e18]:
+        - emphasis [ref=e19]:
+          - generic [ref=e20]: Tika Cake
+        - generic [ref=e21]: принимает
+        - generic [ref=e23]: заказы
+        - generic [ref=e25]: без
+        - generic [ref=e27]: переписки
+      - generic [ref=e29]:
+        - paragraph [ref=e30]: Покупатель сам выбирает торт, точку и время и платит через Kaspi или Forte. Заказ сразу уходит в iiko и на производство.
+        - paragraph [ref=e31]: 2 500 000 ₸ за 14 недель, 3 платежа по готовности этапов.
+        - generic [ref=e32]:
+          - button "Попробовать магазин" [ref=e33] [cursor=pointer]
+          - link "Оставить заявку" [ref=e34] [cursor=pointer]:
+            - /url: "#request"
+    - region "Предложение и демо" [ref=e35]:
+      - complementary "Коммерческое предложение" [ref=e36]:
+        - generic [ref=e37]:
+          - paragraph [ref=e38]: Демо
+          - generic [ref=e39]:
+            - button "Предыдущий раздел" [disabled] [ref=e40]
+            - button "Следующий раздел" [ref=e43] [cursor=pointer]
+        - generic [ref=e47]:
+          - region "Закажите торт в демо" [ref=e48]:
+            - heading "Закажите торт в демо" [level=2] [ref=e49]
+            - paragraph [ref=e50]: Заказ, который вы оформите, появится у команды в разделе «Заказы».
+            - paragraph [ref=e51]: Открыто 0 из 5
+            - list [ref=e52]:
+              - listitem [ref=e53]:
+                - button "1 Выбрать торт 30 сек Размер, свечи, надпись, наличие на точке" [ref=e54] [cursor=pointer]:
+                  - generic [ref=e55]: "1"
+                  - generic [ref=e59]: Выбрать торт
+                  - generic [ref=e60]: 30 сек
+                  - generic [ref=e61]: Размер, свечи, надпись, наличие на точке
+              - listitem [ref=e62]:
+                - button "2 Оформить доставку 40 сек Зона, интервал, промокод WELCOME10, бонусы" [ref=e63] [cursor=pointer]:
+                  - generic [ref=e64]: "2"
+                  - generic [ref=e68]: Оформить доставку
+                  - generic [ref=e69]: 40 сек
+                  - generic [ref=e70]: Зона, интервал, промокод WELCOME10, бонусы
+              - listitem [ref=e71]:
+                - button "3 Найти свой заказ у команды 30 сек Он первый в списке, статус меняется одной кнопкой" [ref=e72] [cursor=pointer]:
+                  - generic [ref=e73]: "3"
+                  - generic [ref=e77]: Найти свой заказ у команды
+                  - generic [ref=e78]: 30 сек
+                  - generic [ref=e79]: Он первый в списке, статус меняется одной кнопкой
+              - listitem [ref=e80]:
+                - button "4 Повторить заказ 20 сек Кабинет, бонусы, история" [ref=e81] [cursor=pointer]:
+                  - generic [ref=e82]: "4"
+                  - generic [ref=e86]: Повторить заказ
+                  - generic [ref=e87]: 20 сек
+                  - generic [ref=e88]: Кабинет, бонусы, история
+              - listitem [ref=e89]:
+                - button "5 Цифры дня 30 сек Выручка, средний чек, сырьё ниже минимума" [ref=e90] [cursor=pointer]:
+                  - generic [ref=e91]: "5"
+                  - generic [ref=e95]: Цифры дня
+                  - generic [ref=e96]: 30 сек
+                  - generic [ref=e97]: Выручка, средний чек, сырьё ниже минимума
+            - paragraph [ref=e98]: Оплата, SMS и обмен с iiko в демо тестовые.
+          - region "Что войдёт в проект" [ref=e99]:
+            - heading "Что войдёт в проект" [level=2] [ref=e100]
+            - list [ref=e101]:
+              - listitem [ref=e102]:
+                - heading "Каталог на русском и казахском" [level=3] [ref=e103]
+                - paragraph [ref=e104]: Фото, состав, КБЖУ, размеры и наличие на выбранной точке.
+                - button "Показать в демо" [ref=e105] [cursor=pointer]
+              - listitem [ref=e106]:
+                - heading "Заказ без переписки" [level=3] [ref=e107]
+                - paragraph [ref=e108]: Свечи, открытка и надпись в карточке торта. Итог с доставкой виден до оплаты.
+                - button "Показать в демо" [ref=e109] [cursor=pointer]
+              - listitem [ref=e110]:
+                - heading "Доставка по 4 зонам и самовывоз" [level=3] [ref=e111]
+                - paragraph [ref=e112]: Свободные интервалы и лимит заказов на каждый интервал.
+                - button "Показать в демо" [ref=e113] [cursor=pointer]
+              - listitem [ref=e114]:
+                - heading "Бонусы и повтор заказа" [level=3] [ref=e115]
+                - paragraph [ref=e116]: До 5% бонусами, повтор прошлого заказа одной кнопкой, скидка в день рождения.
+                - button "Показать в демо" [ref=e117] [cursor=pointer]
+              - listitem [ref=e118]:
+                - heading "Производство и склад" [level=3] [ref=e119]
+                - paragraph [ref=e120]: Оплаченный заказ резервирует сырьё и попадает в план партий.
+                - button "Показать в демо" [ref=e121] [cursor=pointer]
+              - listitem [ref=e122]:
+                - heading "Деньги и аналитика" [level=3] [ref=e123]
+                - paragraph [ref=e124]: Kaspi, Forte и возвраты, выручка по точкам, средний чек.
+                - button "Показать в демо" [ref=e125] [cursor=pointer]
+            - heading "Подключения" [level=3] [ref=e126]
+            - generic [ref=e127]:
+              - generic [ref=e128]:
+                - term [ref=e129]: iiko
+                - definition [ref=e130]: каталог, цены, остатки, бонусы
+              - generic [ref=e131]:
+                - term [ref=e132]: Kaspi или Forte
+                - definition [ref=e133]: оплата и возвраты
+              - generic [ref=e134]:
+                - term [ref=e135]: Курьерика
+                - definition [ref=e136]: передача заказа и статусы
+              - generic [ref=e137]:
+                - term [ref=e138]: SMS или WhatsApp
+                - definition [ref=e139]: код входа и уведомления
+          - region "14 недель до запуска" [ref=e140]:
+            - heading "14 недель до запуска" [level=2] [ref=e141]
+            - generic [aria-hidden] [ref=e142]:
+              - generic [ref=e143]:
+                - generic [ref=e144]: Разбор процессов
+                - emphasis [ref=e146]: 1-2
+              - generic [ref=e147]:
+                - generic [ref=e148]: Дизайн
+                - emphasis [ref=e150]: 3-5
+              - generic [ref=e151]:
+                - generic [ref=e152]: Разработка и подключения
+                - emphasis [ref=e154]: 6-11
+              - generic [ref=e155]:
+                - generic [ref=e156]: Проверка и запуск
+                - emphasis [ref=e158]: 12-14
+              - paragraph [ref=e159]: недели
+            - list [ref=e160]:
+              - listitem [ref=e161]:
+                - generic [ref=e162]: "1"
+                - generic [ref=e163]:
+                  - generic [ref=e164]:
+                    - generic [ref=e165]: Разбор процессов
+                    - generic [ref=e166]: недели 1-2
+                  - generic [ref=e167]:
+                    - term [ref=e168]: Результат
+                    - definition [ref=e169]: Сценарии и план интеграций
+                    - term [ref=e170]: От вас
+                    - definition [ref=e171]: Ассортимент, точки, доступ к iiko
+                    - term [ref=e172]: Оплата
+                    - definition [ref=e173]: 30% при старте, 750 000 ₸
+              - listitem [ref=e174]:
+                - generic [ref=e175]: "2"
+                - generic [ref=e176]:
+                  - generic [ref=e177]:
+                    - generic [ref=e178]: Дизайн
+                    - generic [ref=e179]: недели 3-5
+                  - generic [ref=e180]:
+                    - term [ref=e181]: Результат
+                    - definition [ref=e182]: Готовые экраны для телефона и ноутбука
+                    - term [ref=e183]: От вас
+                    - definition [ref=e184]: Фото и тексты на двух языках
+              - listitem [ref=e185]:
+                - generic [ref=e186]: "3"
+                - generic [ref=e187]:
+                  - generic [ref=e188]:
+                    - generic [ref=e189]: Разработка и подключения
+                    - generic [ref=e190]: недели 6-11
+                  - generic [ref=e191]:
+                    - term [ref=e192]: Результат
+                    - definition [ref=e193]: Заказ проходит от сайта до кухни на тестовом сервере
+                    - term [ref=e194]: От вас
+                    - definition [ref=e195]: Аккаунты Kaspi или Forte, курьерки и SMS
+                    - term [ref=e196]: Оплата
+                    - definition [ref=e197]: 40% после теста, 1 000 000 ₸
+              - listitem [ref=e198]:
+                - generic [ref=e199]: "4"
+                - generic [ref=e200]:
+                  - generic [ref=e201]:
+                    - generic [ref=e202]: Проверка и запуск
+                    - generic [ref=e203]: недели 12-14
+                  - generic [ref=e204]:
+                    - term [ref=e205]: Результат
+                    - definition [ref=e206]: Рабочий сайт, исходный код и инструкции
+                    - term [ref=e207]: От вас
+                    - definition [ref=e208]: Приёмка
+                    - term [ref=e209]: Оплата
+                    - definition [ref=e210]: 30% после запуска, 750 000 ₸
+          - region "Стоимость" [ref=e211]:
+            - heading "Стоимость" [level=2] [ref=e212]
+            - paragraph [ref=e213]:
+              - generic [aria-hidden] [ref=e215]: 2 500 000 ₸
+            - paragraph [ref=e216]: Платите по мере готовности, цена действует до 7 декабря.
+            - list [ref=e217]:
+              - listitem [ref=e218]:
+                - generic [ref=e219]: 750 000 ₸
+                - generic [ref=e220]: 30%
+                - generic [ref=e221]: при старте
+              - listitem [ref=e222]:
+                - generic [ref=e223]: 1 000 000 ₸
+                - generic [ref=e224]: 40%
+                - generic [ref=e225]: после теста
+              - listitem [ref=e226]:
+                - generic [ref=e227]: 750 000 ₸
+                - generic [ref=e228]: 30%
+                - generic [ref=e229]: после запуска
+            - heading "Ещё в цене" [level=3] [ref=e230]
+            - list [ref=e231]:
+              - listitem [ref=e232]:
+                - generic [ref=e235]: Проектирование и дизайн
+              - listitem [ref=e236]:
+                - generic [ref=e239]: Серверная часть и подключения
+              - listitem [ref=e240]:
+                - generic [ref=e243]: Тестирование и запуск
+              - listitem [ref=e244]:
+                - generic [ref=e247]: Исходный код и все доступы остаются у вас
+            - paragraph [ref=e248]: "Не входит: Мобильное приложение и автоматические рассылки. Это следующий этап."
+            - paragraph [ref=e249]: "Отдельно: лицензия iiko, комиссия Kaspi или Forte, SMS, хостинг. Оплачиваются напрямую сервисам по их тарифам."
+          - region "Что уточним до старта" [ref=e250]:
+            - heading "Что уточним до старта" [level=2] [ref=e251]
+            - list [ref=e252]:
+              - listitem [ref=e253]:
+                - generic [ref=e254]: "Методы API iiko: остатки, резервы, бонусы"
+                - generic [ref=e255]: WhiteCode
+                - generic [ref=e256]: 1-я неделя
+              - listitem [ref=e257]:
+                - generic [ref=e258]: Схема оплаты Kaspi или Forte и возвраты
+                - generic [ref=e259]: WhiteCode и Tika Cake
+                - generic [ref=e260]: 1-я неделя
+              - listitem [ref=e261]:
+                - generic [ref=e262]: "Канал кода входа: SMS или WhatsApp"
+                - generic [ref=e263]: Tika Cake
+                - generic [ref=e264]: 2-я неделя
+              - listitem [ref=e265]:
+                - generic [ref=e266]: "API Курьерики: передача заказа и статусы"
+                - generic [ref=e267]: WhiteCode
+                - generic [ref=e268]: 2-я неделя
+          - region "Вопросы" [ref=e269]:
+            - heading "Вопросы" [level=2] [ref=e270]
+            - generic [ref=e271]:
+              - generic [ref=e272]:
+                - term [ref=e273]: Что если после запуска что-то сломается?
+                - definition [ref=e274]: 60 дней после запуска мы поддерживаем проект. На код даём гарантию 6 месяцев.
+              - generic [ref=e275]:
+                - term [ref=e276]: Что нужно от Tika Cake?
+                - definition [ref=e277]: Ассортимент с фото, список точек, зоны доставки, правила скидок и доступ к iiko.
+              - generic [ref=e278]:
+                - term [ref=e279]: Что можно добавить потом?
+                - definition [ref=e280]: Мобильное приложение, рассылки и рекомендации. Они встанут на ту же серверную часть.
+          - generic [ref=e281]:
+            - paragraph [ref=e282]: "Ниже похожие проекты WhiteCode и заявка. Текст для WhatsApp мы подставим сами: что вы открыли в демо и что хотите обсудить."
+            - generic [ref=e283]:
+              - button "Оставить заявку" [ref=e284] [cursor=pointer]
+              - button "Похожие проекты" [ref=e285] [cursor=pointer]
+      - generic [ref=e286]:
+        - paragraph [ref=e287]:
+          - generic [ref=e288]: Сейчас в демо
+          - generic [ref=e289]: Главная магазина
+        - generic [ref=e293]:
+          - generic [ref=e294]:
+            - button "Назад в демо" [ref=e295] [cursor=pointer]
+            - button "Вперёд в демо" [ref=e298] [cursor=pointer]
+            - generic [ref=e301]: tika-cake.demo
+            - button "Начать показ заново" [ref=e306] [cursor=pointer]
+            - button "Развернуть демо" [ref=e310] [cursor=pointer]
+          - iframe [ref=e314]:
+            - generic [ref=f1e1]:
+              - generic [ref=f1e2]:
+                - generic [ref=f1e4]:
+                  - generic [ref=f1e5]: Демо · оплата, SMS и обмен с iiko тестовые
+                  - link "Управление бизнесом" [ref=f1e6] [cursor=pointer]:
+                    - /url: "#/admin"
+                - banner [ref=f1e9]:
+                  - generic [ref=f1e10]:
+                    - link "Tika Cake, главная" [ref=f1e11] [cursor=pointer]:
+                      - /url: "#/"
+                      - generic [ref=f1e12]: tika
+                      - generic [ref=f1e13]: cake
+                    - search [ref=f1e14]:
+                      - searchbox "Поиск" [ref=f1e18]
+                    - generic [ref=f1e19]:
+                      - generic [ref=f1e23]: Точка
+                      - combobox "Точка" [ref=f1e24] [cursor=pointer]:
+                        - option "Tika • Центр" [selected]
+                        - option "Tika • Парк"
+                        - option "Кухня доставки"
+                    - group "Язык" [ref=f1e25]:
+                      - button "RU" [pressed] [ref=f1e26] [cursor=pointer]
+                      - button "KZ" [ref=f1e27] [cursor=pointer]
+                    - generic [ref=f1e28]:
+                      - link "Личный кабинет" [ref=f1e29] [cursor=pointer]:
+                        - /url: "#/account"
+                      - link "Корзина, 0 шт." [ref=f1e33] [cursor=pointer]:
+                        - /url: "#/cart"
+                - main [ref=f1e37]:
+                  - generic [ref=f1e38]:
+                    - generic [ref=f1e40]:
+                      - generic [ref=f1e41]: Хит недели
+                      - heading "Клубничное облако" [level=1] [ref=f1e44]
+                      - paragraph [ref=f1e45]: Воздушный бисквит, нежный крем и щедрый слой ягод. Осталось позвать любимых.
+                      - generic [ref=f1e46]:
+                        - link "Выбрать размер" [ref=f1e47] [cursor=pointer]:
+                          - /url: "#/product/strawberry-cloud"
+                        - generic [ref=f1e48]: от 6 900 ₸
+                    - navigation "Категории" [ref=f1e83]:
+                      - link "Торты" [ref=f1e84] [cursor=pointer]:
+                        - /url: "#/catalog?cat=cakes"
+                      - link "Пироги" [ref=f1e115] [cursor=pointer]:
+                        - /url: "#/catalog?cat=pies"
+                      - link "Пирожные" [ref=f1e133] [cursor=pointer]:
+                        - /url: "#/catalog?cat=pastry"
+                      - link "Выпечка" [ref=f1e147] [cursor=pointer]:
+                        - /url: "#/catalog?cat=bakery"
+                      - link "Печенье" [ref=f1e166] [cursor=pointer]:
+                        - /url: "#/catalog?cat=cookies"
+                      - link "Подарки" [ref=f1e188] [cursor=pointer]:
+                        - /url: "#/catalog?cat=gifts"
+                    - generic [ref=f1e220]:
+                      - heading "Рекомендуем" [level=2] [ref=f1e221]
+                      - link "Смотреть все →" [ref=f1e222] [cursor=pointer]:
+                        - /url: "#/catalog?cat=cakes"
+                    - generic [ref=f1e223]:
+                      - article [ref=f1e224]:
+                        - link "Клубничное облако" [ref=f1e225] [cursor=pointer]:
+                          - /url: "#/product/strawberry-cloud"
+                          - generic [ref=f1e255]: Хит
+                        - button "В избранное" [ref=f1e256] [cursor=pointer]
+                        - generic [ref=f1e259]:
+                          - generic [ref=f1e260]: 0,8 кг · 3 размера
+                          - heading [level=3] [ref=f1e262]:
+                            - link "Клубничное облако" [ref=f1e263] [cursor=pointer]:
+                              - /url: "#/product/strawberry-cloud"
+                          - paragraph [ref=f1e264]: Воздушный бисквит, нежный сливочный крем и сочная клубника. Для маленьких и больших поводов.
+                          - generic [ref=f1e265]: Есть сегодня · Центр
+                          - generic [ref=f1e266]:
+                            - generic [ref=f1e267]: от 6 900 ₸
+                            - link "Выбрать размер" [ref=f1e268] [cursor=pointer]:
+                              - /url: "#/product/strawberry-cloud"
+                      - article [ref=f1e269]:
+                        - link "Шоколадный вечер" [ref=f1e270] [cursor=pointer]:
+                          - /url: "#/product/chocolate-evening"
+                        - button "В избранное" [ref=f1e300] [cursor=pointer]
+                        - generic [ref=f1e303]:
+                          - generic [ref=f1e304]: 0,8 кг · 3 размера
+                          - heading [level=3] [ref=f1e306]:
+                            - link "Шоколадный вечер" [ref=f1e307] [cursor=pointer]:
+                              - /url: "#/product/chocolate-evening"
+                          - paragraph [ref=f1e308]: Насыщенный шоколадный бисквит и мягкий ганаш. Тот самый десерт к долгому разговору.
+                          - generic [ref=f1e309]: Есть сегодня · Центр
+                          - generic [ref=f1e310]:
+                            - generic [ref=f1e311]: от 7 400 ₸
+                            - link "Выбрать размер" [ref=f1e312] [cursor=pointer]:
+                              - /url: "#/product/chocolate-evening"
+                      - article [ref=f1e313]:
+                        - link "Медовик со сметаной" [ref=f1e314] [cursor=pointer]:
+                          - /url: "#/product/honey-cake"
+                        - button "В избранное" [ref=f1e344] [cursor=pointer]
+                        - generic [ref=f1e347]:
+                          - generic [ref=f1e348]: 0,8 кг · 3 размера
+                          - heading [level=3] [ref=f1e350]:
+                            - link "Медовик со сметаной" [ref=f1e351] [cursor=pointer]:
+                              - /url: "#/product/honey-cake"
+                          - paragraph [ref=f1e352]: Тонкие медовые коржи со сметанным кремом. Знакомый вкус в нежном исполнении.
+                          - generic [ref=f1e353]: Есть сегодня · Центр
+                          - generic [ref=f1e354]:
+                            - generic [ref=f1e355]: от 5 900 ₸
+                            - link "Выбрать размер" [ref=f1e356] [cursor=pointer]:
+                              - /url: "#/product/honey-cake"
+                      - article [ref=f1e357]:
+                        - link "Ягодный чизкейк" [ref=f1e358] [cursor=pointer]:
+                          - /url: "#/product/berry-cheesecake"
+                        - button "В избранное" [ref=f1e388] [cursor=pointer]
+                        - generic [ref=f1e391]:
+                          - generic [ref=f1e392]: 0,8 кг · 3 размера
+                          - heading [level=3] [ref=f1e394]:
+                            - link "Ягодный чизкейк" [ref=f1e395] [cursor=pointer]:
+                              - /url: "#/product/berry-cheesecake"
+                          - paragraph [ref=f1e396]: Сливочный чизкейк на хрустящей основе, украшенный ягодами. Для неспешного чаепития.
+                          - generic [ref=f1e397]: Есть сегодня · Центр
+                          - generic [ref=f1e398]:
+                            - generic [ref=f1e399]: от 7 900 ₸
+                            - link "Выбрать размер" [ref=f1e400] [cursor=pointer]:
+                              - /url: "#/product/berry-cheesecake"
+                    - generic [ref=f1e401]:
+                      - generic [ref=f1e402]:
+                        - generic [ref=f1e409]: Доставка к вашему времени
+                        - generic [ref=f1e410]: Бесплатно от 15 000 ₸
+                      - generic [ref=f1e411]:
+                        - generic [ref=f1e417]: Забрать по пути
+                        - generic [ref=f1e418]: Наличие по выбранной точке
+                      - generic [ref=f1e419]:
+                        - generic [ref=f1e420]: 5%
+                        - generic [ref=f1e421]: Вернётся бонусами
+                        - generic [ref=f1e422]: После получения заказа
+                      - generic [ref=f1e423]:
+                        - generic [ref=f1e424]: −10%
+                        - generic [ref=f1e425]: WELCOME10
+                        - generic [ref=f1e426]: На первый заказ от 3 000 ₸
+                    - heading "Для каждого повода" [level=2] [ref=f1e428]
+                    - generic [ref=f1e429]:
+                      - link "День рождения Торт для заветного желания" [ref=f1e430] [cursor=pointer]:
+                        - /url: "#/catalog?for=birthday"
+                        - generic [ref=f1e461]: День рождения
+                        - generic [ref=f1e462]: Торт для заветного желания
+                      - link "Просто к чаю Маленькая пауза для себя" [ref=f1e463] [cursor=pointer]:
+                        - /url: "#/catalog?for=tea"
+                        - generic [ref=f1e481]: Просто к чаю
+                        - generic [ref=f1e482]: Маленькая пауза для себя
+                      - link "Сказать спасибо Тёплые слова в сладкой форме" [ref=f1e483] [cursor=pointer]:
+                        - /url: "#/catalog?for=thanks"
+                        - generic [ref=f1e515]: Сказать спасибо
+                        - generic [ref=f1e516]: Тёплые слова в сладкой форме
+                      - link "Для компании Хватит на всех за столом" [ref=f1e517] [cursor=pointer]:
+                        - /url: "#/catalog?for=company"
+                        - generic [ref=f1e548]: Для компании
+                        - generic [ref=f1e549]: Хватит на всех за столом
+                    - generic [ref=f1e550]:
+                      - heading "Новинки" [level=2] [ref=f1e551]
+                      - link "Смотреть все →" [ref=f1e552] [cursor=pointer]:
+                        - /url: "#/catalog?sort=new"
+                    - generic [ref=f1e553]:
+                      - article [ref=f1e554]:
+                        - link "Фисташка и малина" [ref=f1e555] [cursor=pointer]:
+                          - /url: "#/product/pistachio-raspberry"
+                          - generic [ref=f1e585]: Новинка
+                        - button "В избранное" [ref=f1e586] [cursor=pointer]
+                        - generic [ref=f1e589]:
+                          - generic [ref=f1e590]: 0,8 кг · 3 размера
+                          - heading [level=3] [ref=f1e592]:
+                            - link "Фисташка и малина" [ref=f1e593] [cursor=pointer]:
+                              - /url: "#/product/pistachio-raspberry"
+                          - paragraph [ref=f1e594]: Ореховый бисквит, фисташковый крем и малиновая прослойка с лёгкой кислинкой.
+                          - generic [ref=f1e595]: Есть сегодня · Центр
+                          - generic [ref=f1e596]:
+                            - generic [ref=f1e597]: от 8 500 ₸
+                            - link "Выбрать размер" [ref=f1e598] [cursor=pointer]:
+                              - /url: "#/product/pistachio-raspberry"
+                      - article [ref=f1e599]:
+                        - link "Вишнёвый трюфель" [ref=f1e600] [cursor=pointer]:
+                          - /url: "#/product/cherry-truffle"
+                          - generic [ref=f1e630]: Новинка
+                        - button "В избранное" [ref=f1e631] [cursor=pointer]
+                        - generic [ref=f1e634]:
+                          - generic [ref=f1e635]: 0,8 кг · 3 размера
+                          - heading [level=3] [ref=f1e637]:
+                            - link "Вишнёвый трюфель" [ref=f1e638] [cursor=pointer]:
+                              - /url: "#/product/cherry-truffle"
+                          - paragraph [ref=f1e639]: Шоколадные коржи, вишнёвая начинка и густой крем. Яркий баланс сладкого и кислого.
+                          - generic [ref=f1e640]: Есть сегодня · Центр
+                          - generic [ref=f1e641]:
+                            - generic [ref=f1e642]: от 7 200 ₸
+                            - link "Выбрать размер" [ref=f1e643] [cursor=pointer]:
+                              - /url: "#/product/cherry-truffle"
+                      - article [ref=f1e644]:
+                        - link "Ягодный выходной" [ref=f1e645] [cursor=pointer]:
+                          - /url: "#/product/berry-weekend"
+                          - generic [ref=f1e675]: Новинка
+                        - button "В избранное" [ref=f1e676] [cursor=pointer]
+                        - generic [ref=f1e679]:
+                          - generic [ref=f1e680]: 0,8 кг · 3 размера
+                          - heading [level=3] [ref=f1e682]:
+                            - link "Ягодный выходной" [ref=f1e683] [cursor=pointer]:
+                              - /url: "#/product/berry-weekend"
+                          - paragraph [ref=f1e684]: Творожный крем и ягодное ассорти на рассыпчатом корже. Создан для чашки чая без спешки.
+                          - generic [ref=f1e685]: Есть сегодня · Центр
+                          - generic [ref=f1e686]:
+                            - generic [ref=f1e687]: от 6 700 ₸
+                            - link "Выбрать размер" [ref=f1e688] [cursor=pointer]:
+                              - /url: "#/product/berry-weekend"
+                      - article [ref=f1e689]:
+                        - link "Пирог с лесными ягодами" [ref=f1e690] [cursor=pointer]:
+                          - /url: "#/product/forest-pie"
+                          - generic [ref=f1e707]: Новинка
+                        - button "В избранное" [ref=f1e708] [cursor=pointer]
+                        - generic [ref=f1e711]:
+                          - generic [ref=f1e712]: 650 г
+                          - heading [level=3] [ref=f1e714]:
+                            - link "Пирог с лесными ягодами" [ref=f1e715] [cursor=pointer]:
+                              - /url: "#/product/forest-pie"
+                          - paragraph [ref=f1e716]: Много ягод, тонкое тесто и приятная кислинка. Поделитесь с теми, кто заглянул на чай.
+                          - generic [ref=f1e717]: Есть сегодня · Центр
+                          - generic [ref=f1e718]:
+                            - generic [ref=f1e719]: 3 600 ₸
+                            - button "В корзину" [ref=f1e720] [cursor=pointer]
+                    - generic [ref=f1e721]:
+                      - generic [ref=f1e722]: −10%
+                      - generic [ref=f1e723]:
+                        - generic [ref=f1e724]: Начнём со сладкого
+                        - generic [ref=f1e725]:
+                          - text: Промокод
+                          - code [ref=f1e726]: WELCOME10
+                          - text: на заказ от 3 000 ₸
+                      - link "Выбрать торт" [ref=f1e727] [cursor=pointer]:
+                        - /url: "#/catalog?cat=cakes"
+                    - generic [ref=f1e728]:
+                      - heading "Наборы в подарок" [level=2] [ref=f1e729]
+                      - link "Смотреть все →" [ref=f1e730] [cursor=pointer]:
+                        - /url: "#/catalog?cat=gifts"
+                    - generic [ref=f1e731]:
+                      - article [ref=f1e732]:
+                        - link "Макарон «Классика»" [ref=f1e733] [cursor=pointer]:
+                          - /url: "#/product/macaron-classic"
+                          - generic [ref=f1e764]: Выгода 700 ₸
+                        - button "В избранное" [ref=f1e765] [cursor=pointer]
+                        - generic [ref=f1e768]:
+                          - generic [ref=f1e769]: 12 шт
+                          - heading [level=3] [ref=f1e771]:
+                            - link "Макарон «Классика»" [ref=f1e772] [cursor=pointer]:
+                              - /url: "#/product/macaron-classic"
+                          - paragraph [ref=f1e773]: Двенадцать миндальных макарон с ванильным, шоколадным и карамельным кремом. Подарок, которым приятно делиться.
+                          - generic [ref=f1e774]: Есть сегодня · Центр
+                          - generic [ref=f1e775]:
+                            - generic [ref=f1e776]: 4 900 ₸5 600 ₸
+                            - button "В корзину" [ref=f1e777] [cursor=pointer]
+                      - article [ref=f1e778]:
+                        - link "Макарон «Ягодное ассорти»" [ref=f1e779] [cursor=pointer]:
+                          - /url: "#/product/macaron-berry"
+                          - generic [ref=f1e810]: Выгода 700 ₸
+                        - button "В избранное" [ref=f1e811] [cursor=pointer]
+                        - generic [ref=f1e814]:
+                          - generic [ref=f1e815]: 12 шт
+                          - heading [level=3] [ref=f1e817]:
+                            - link "Макарон «Ягодное ассорти»" [ref=f1e818] [cursor=pointer]:
+                              - /url: "#/product/macaron-berry"
+                          - paragraph [ref=f1e819]: Двенадцать макарон с клубникой, малиной и чёрной смородиной в сливочном креме. Яркое спасибо в одной коробке.
+                          - generic [ref=f1e820]: Есть сегодня · Центр
+                          - generic [ref=f1e821]:
+                            - generic [ref=f1e822]: 6 500 ₸7 200 ₸
+                            - button "В корзину" [ref=f1e823] [cursor=pointer]
+                      - article [ref=f1e824]:
+                        - link "Печенье с шоколадом" [ref=f1e825] [cursor=pointer]:
+                          - /url: "#/product/choc-cookie"
+                        - button "В избранное" [ref=f1e846] [cursor=pointer]
+                        - generic [ref=f1e849]:
+                          - generic [ref=f1e850]: 200 г
+                          - heading [level=3] [ref=f1e852]:
+                            - link "Печенье с шоколадом" [ref=f1e853] [cursor=pointer]:
+                              - /url: "#/product/choc-cookie"
+                          - paragraph [ref=f1e854]: Мягкая серединка, хрустящий край и кусочки шоколада. Для стола, за которым рады гостям.
+                          - generic [ref=f1e855]: Есть сегодня · Центр
+                          - generic [ref=f1e856]:
+                            - generic [ref=f1e857]: 1 800 ₸
+                            - button "В корзину" [ref=f1e858] [cursor=pointer]
+                      - article [ref=f1e859]:
+                        - link "Эклер ванильный" [ref=f1e860] [cursor=pointer]:
+                          - /url: "#/product/eclair"
+                        - button "В избранное" [ref=f1e873] [cursor=pointer]
+                        - generic [ref=f1e876]:
+                          - generic [ref=f1e877]: 90 г
+                          - heading [level=3] [ref=f1e879]:
+                            - link "Эклер ванильный" [ref=f1e880] [cursor=pointer]:
+                              - /url: "#/product/eclair"
+                          - paragraph [ref=f1e881]: Лёгкое заварное тесто и нежный ванильный крем. Маленький повод порадовать себя.
+                          - generic [ref=f1e882]: Есть сегодня · Центр
+                          - generic [ref=f1e883]:
+                            - generic [ref=f1e884]: 1 100 ₸
+                            - button "В корзину" [ref=f1e885] [cursor=pointer]
+                - contentinfo [ref=f1e886]:
+                  - generic [ref=f1e887]:
+                    - generic [ref=f1e888]:
+                      - link "tika cake" [ref=f1e889] [cursor=pointer]:
+                        - /url: "#/"
+                        - generic [ref=f1e890]: tika
+                        - generic [ref=f1e891]: cake
+                      - paragraph [ref=f1e892]: Торты, десерты и тёплые встречи. Самовывоз из двух точек и доставка по четырём зонам.
+                    - generic [ref=f1e893]:
+                      - heading "Покупателям" [level=4] [ref=f1e894]
+                      - list [ref=f1e895]:
+                        - listitem [ref=f1e896]:
+                          - link "Каталог" [ref=f1e897] [cursor=pointer]:
+                            - /url: "#/catalog"
+                        - listitem [ref=f1e898]:
+                          - link "Бонусы и кабинет" [ref=f1e899] [cursor=pointer]:
+                            - /url: "#/account"
+                        - listitem [ref=f1e900]:
+                          - link "Корзина" [ref=f1e901] [cursor=pointer]:
+                            - /url: "#/cart"
+                    - generic [ref=f1e902]:
+                      - heading "Точки" [level=4] [ref=f1e903]
+                      - list [ref=f1e904]:
+                        - listitem [ref=f1e905]: Tika • Центрежедневно 08:00–22:00
+                        - listitem [ref=f1e906]: Tika • Паркежедневно 09:00–21:00
+                        - listitem [ref=f1e907]: Кухня доставкитолько доставка
+                    - generic [ref=f1e908]:
+                      - heading "Доставка" [level=4] [ref=f1e909]
+                      - list [ref=f1e910]:
+                        - listitem [ref=f1e911]: 10:00–20:00, интервал 2 часа
+                        - listitem [ref=f1e912]: Бесплатно от 15 000 ₸
+                        - listitem [ref=f1e913]: Kaspi и Forte
+                    - paragraph [ref=f1e914]: Демо-версия для коммерческого предложения WhiteCode. Заказы, оплата и сообщения тестовые.
+              - status
+        - paragraph [ref=e388]:
+          - button "Открыть демо на весь экран" [ref=e389] [cursor=pointer]
+    - region "Похожие проекты WhiteCode" [ref=e390]:
+      - heading "Похожие проекты WhiteCode" [level=2] [ref=e391]
+      - paragraph [ref=e392]: "Мы делали проекты с теми же задачами: продукты питания, онлайн-продажи, каталог товаров и приём заказов."
+      - generic [ref=e393]:
+        - article [ref=e394]:
+          - 'img "Hiba: обложка проекта" [ref=e396]'
+          - generic [ref=e397]:
+            - paragraph [ref=e398]: Hiba
+            - heading "Маркетплейс халяльной продукции" [level=3] [ref=e399]
+            - paragraph [ref=e400]: UX/UI-дизайн и платформа, которая связывает производителей, поставщиков и покупателей. Каталог товаров и оформление заказов.
+            - paragraph [ref=e401]: "Как у вас: продукты питания и онлайн-продажи"
+        - article [ref=e402]:
+          - 'img "U-Market: обложка проекта" [ref=e404]'
+          - generic [ref=e405]:
+            - paragraph [ref=e406]: U-Market
+            - heading "B2B-платформа для строительной отрасли" [level=3] [ref=e407]
+            - paragraph [ref=e408]: Ассортимент, заказы и работа с корпоративными клиентами в одной системе. Ключевые процессы продаж автоматизированы.
+            - paragraph [ref=e409]: "Как у вас: онлайн-продажи и каталог товаров"
+        - article [ref=e410]:
+          - 'img "Telekom Srbija: обложка проекта" [ref=e412]'
+          - generic [ref=e413]:
+            - paragraph [ref=e414]: Telekom Srbija
+            - heading "Автоматизация телеком-инфраструктуры" [level=3] [ref=e415]
+            - paragraph [ref=e416]: Платформа для обработки заказов и управления жизненным циклом услуг. Новые сервисы выходят на рынок быстрее.
+            - paragraph [ref=e417]: "Как у вас: приём заказов и учёт и операции"
+      - paragraph [ref=e418]: "Мы делаем сайты, сервисы и интеграции 8 лет. На код даём гарантию 6 месяцев, после запуска 60 дней поддерживаем проект. Среди клиентов банки, телеком и производители:"
+      - generic "Клиенты WhiteCode" [ref=e419]:
+        - img "Raiffeisen Bank"
+        - img "Sberbank"
+        - img "OTP Bank"
+        - img "Telekom Srbija"
+        - img "Hiba"
+        - img "Inteca"
+        - img "ART.KZ"
+    - region "Обсудим запуск за 30 минут" [ref=e420]:
+      - generic [ref=e421]:
+        - heading [level=2] [ref=e422]:
+          - text: Обсудим запуск за
+          - emphasis [ref=e423]: 30 минут
+        - paragraph [ref=e424]: "Нажмите «Оставить заявку»: откроется WhatsApp с готовым сообщением для Марселя."
+        - list [ref=e425]:
+          - listitem [ref=e426]:
+            - generic [ref=e427]: "1"
+            - text: Вы отправляете заявку
+          - listitem [ref=e428]:
+            - generic [ref=e429]: "2"
+            - text: Созваниваемся на 30 минут и проходим демо
+          - listitem [ref=e430]:
+            - generic [ref=e431]: "3"
+            - text: Фиксируем состав, сроки и оплату в договоре
+      - generic [ref=e432]:
+        - generic [ref=e433]:
+          - generic [aria-hidden] [ref=e434]: М
+          - generic [ref=e435]:
+            - generic [ref=e436]: Марсель
+            - text: Ваш контакт в WhiteCode
+        - generic [ref=e437]:
+          - generic [ref=e438]: Как к вам обращаться
+          - textbox "Как к вам обращаться" [ref=e439]:
+            - /placeholder: Имя
+        - group "Что обсудим" [ref=e440]:
+          - generic [ref=e442]:
+            - generic [ref=e443]:
+              - checkbox "Сроки и этапы" [checked]
+              - generic [ref=e444] [cursor=pointer]: Сроки и этапы
+            - generic [ref=e445]:
+              - checkbox "Стоимость и оплата" [checked]
+              - generic [ref=e446] [cursor=pointer]: Стоимость и оплата
+            - generic [ref=e447]:
+              - checkbox "Демо на созвоне"
+              - generic [ref=e448] [cursor=pointer]: Демо на созвоне
+            - generic [ref=e449]:
+              - checkbox "Подключение iiko и оплаты"
+              - generic [ref=e450] [cursor=pointer]: Подключение iiko и оплаты
+        - generic [ref=e451]:
+          - generic [ref=e452]: Сообщение в WhatsApp
+          - paragraph [ref=e453]: "Здравствуйте, Марсель! Посмотрели предложение WhiteCode для Tika Cake: интернет-магазин и учёт, 2 500 000 ₸, 14 недель. Хотим обсудить: сроки и этапы, стоимость и оплату. Предложение: http://localhost:5180/"
+        - button "Оставить заявку" [ref=e454] [cursor=pointer]
+        - paragraph [ref=e457]:
+          - text: "Или напрямую:"
+          - link "+7 700 300 21 32" [ref=e458] [cursor=pointer]:
+            - /url: tel:+77003002132
+          - button "скопировать" [ref=e459] [cursor=pointer]
+          - text: ·
+          - link "Telegram" [ref=e460] [cursor=pointer]:
+            - /url: https://t.me/whitecode_kz
+  - contentinfo [ref=e461]:
+    - img "WhiteCode" [ref=e463]
+    - generic [ref=e464]: Алматы, Сатпаева 4а, 5 этаж
+    - link "whitecode.kz" [ref=e466] [cursor=pointer]:
+      - /url: https://whitecode.kz
+    - generic [ref=e467]: Предложение от 23 ноября 2026
+  - status
