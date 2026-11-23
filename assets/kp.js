@@ -85,7 +85,7 @@
   if (Date.now() > new Date(D.validUntil + 'T23:59:59').getTime()) {
     const ex = $('#expired');
     ex.hidden = false;
-    ex.textContent = `Срок предложения истёк ${dateRu(D.validUntil)}. Напишите ${M.name}, обновим цены и сроки.`;
+    ex.textContent = `Срок предложения истёк ${dateRu(D.validUntil)}. Напишите ${M.nameDat || M.name}, обновим цены и сроки.`;
   }
 
   /* ---------- proposal sections (left column) ---------- */

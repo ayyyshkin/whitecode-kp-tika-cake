@@ -14,7 +14,8 @@ window.STUDIO = {
   address: 'Алматы, Сатпаева 4а, 5 этаж',
 
   manager: {
-    name: 'Эмиль',
+    name: 'Марсель',
+    nameDat: 'Марселю', // «напишите Марселю»
     role: 'Ваш контакт в WhiteCode',
     whatsapp: '77003002132',
     whatsappLabel: '+7 700 300 21 32',
