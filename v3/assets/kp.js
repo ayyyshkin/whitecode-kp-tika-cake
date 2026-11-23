@@ -79,7 +79,7 @@
     return NF.format(v);
   }
   // price and timing read as one sentence, not as a stats row
-  $('#heroTerms').textContent = `${money(total)} за ${weeksTotal} ${weeksWord(weeksTotal)}, ${payments.length} ${plural(payments.length, 'платёж', 'платежа', 'платежей')} по готовности этапов. Цена действует до ${dateRu(D.validUntil)}.`;
+  $('#heroTerms').textContent = `${money(total)} за ${weeksTotal} ${weeksWord(weeksTotal)}. Цена до ${dateRu(D.validUntil)}.`;
 
   // hero object: a real product photo from the client's materials
   $('#heroArt').innerHTML = '<img src="assets/photos/hero-strawberry.webp" alt="Торт «Клубничное облако» Tika Cake" width="1400" height="934" fetchpriority="high" decoding="async">';
@@ -101,7 +101,7 @@
       <p class="tour ${rv()}" id="tourText" aria-live="polite"></p>
       <ol class="scn">${s.scenarios.map((x, i) => `
         <li class="${rv()}"><button type="button" data-route="${esc(x.route)}" data-scenario="${i}">
-          <span class="scn-n"><span class="n">${i + 1}</span>${CHECK}</span><b>${esc(x.title)}</b><span class="t">${esc(x.time)}</span><small>${esc(x.text)}</small>
+          <span class="scn-n"><span class="n">${i + 1}</span>${CHECK}</span><b>${esc(x.title)}</b>${x.text ? `<small>${esc(x.text)}</small>` : ''}
         </button></li>`).join('')}
       </ol>
       <p class="note ${rv()}">${esc(s.note)}</p>`,
@@ -114,8 +114,7 @@
           ${demoLink(m.route)}
         </li>`).join('')}
       </ul>
-      <h3 class="sub-h ${rv()}">Подключения</h3>
-      <dl class="ints ${rv()}">${s.integrations.map((i) => `<div><dt>${esc(i.name)}</dt><dd>${esc(i.what)}</dd></div>`).join('')}</dl>`,
+      <p class="ints ${rv()}">Подключим ${s.integrations.map((i) => `<b>${esc(i.name || i)}</b>`).join(', ')}.</p>`,
 
     stages: (s) => {
       let start = 0;
@@ -124,31 +123,20 @@
         const width = (x.weeks / weeksTotal) * 100;
         const from = start + 1;
         start += x.weeks;
-        return `<div class="g-row"><span class="g-name">${esc(x.name)}</span><div class="g-track"><i class="g-bar" style="left:${left}%;width:${width}%;--d:${i}"></i><em class="g-w" style="left:calc(${left + width}% + 8px)">${from === start ? from : `${from}-${start}`}</em></div></div>`;
+        return `<li class="g-row"><span class="g-name">${esc(x.name)}</span><div class="g-track"><i class="g-bar" style="left:${left}%;width:${width}%;--d:${i}"></i><em class="g-w" style="left:calc(${left + width}% + 8px)"><span class="sr">${from === start ? 'неделя' : 'недели'} </span>${from === start ? from : `${from}-${start}`}</em></div></li>`;
       }).join('');
-      let w = 0;
       return `
-      <div class="gantt ${rv()}" aria-hidden="true">${rows}<p class="g-axis"><span>недели</span></p></div>
-      <ol class="stages">${s.items.map((x, i) => {
-        const from = w + 1; w += x.weeks;
-        return `<li class="${rv()}"><span class="st-n">${i + 1}</span><div>
-          <div class="st-top"><b>${esc(x.name)}</b><span>${from === w ? `неделя ${from}` : `недели ${from}-${w}`}</span></div>
-          <dl><dt>Результат</dt><dd>${esc(x.result)}</dd><dt>От вас</dt><dd>${esc(x.fromClient)}</dd>${x.pay ? `<dt>Оплата</dt><dd>${x.pay}% ${esc(x.payWhen)}, ${money((total * x.pay) / 100)}</dd>` : ''}</dl>
-        </div></li>`;
-      }).join('')}</ol>`;
+      <ol class="gantt ${rv()}">${rows}</ol><p class="g-axis ${rv()}" aria-hidden="true">недели</p>`;
     },
 
     pricing: (s) => `
       <p class="price-big ${rv()}">${counter(total, 'money')}</p>
-      <p class="price-sub ${rv()}">Платите по мере готовности, цена действует до ${dateRu(D.validUntil)}.</p>
-      <ol class="pays ${rv()}">${payments.map((p) => `<li><span class="pay-amt">${money((total * p.pay) / 100)}</span><span class="pay-pct">${p.pay}%</span><span class="pay-when">${esc(p.payWhen)}</span></li>`).join('')}</ol>
-      <h3 class="sub-h ${rv()}">${esc(s.includesTitle || 'Входит')}</h3>
+      <ol class="pays ${rv()}">${payments.map((p) => `<li><span class="pay-amt">${money((total * p.pay) / 100)}</span><span class="pay-when">${p.pay}% ${esc(p.payWhen)}</span></li>`).join('')}</ol>
       <ul class="incl ${rv()}">${s.includes.map((x) => `<li>${CHECK}<span>${esc(x)}</span></li>`).join('')}</ul>
-      <p class="fine ${rv()}"><b>Не входит:</b> ${esc(s.outOfScope)}</p>
-      <p class="fine ${rv()}"><b>Отдельно:</b> ${esc(s.extras.join(', '))}. ${esc(s.extrasNote)}</p>`,
+      ${s.extras ? `<p class="fine ${rv()}">Отдельно: ${esc(s.extras)}.</p>` : ''}`,
 
     open: (s) => `
-      <ul class="oq">${s.items.map((i) => `<li class="${rv()}"><span class="oq-what">${esc(i.what)}</span><span class="oq-who">${esc(i.who)}</span><span class="oq-when">${esc(i.when)}</span></li>`).join('')}</ul>`,
+      <ul class="oq">${s.items.map((i) => `<li class="${rv()}">${esc(i.what || i)}</li>`).join('')}</ul>`,
 
     faq: (s) => `
       <dl class="faq">${s.items.map((i) => `<div class="${rv()}"><dt>${esc(i.q)}</dt><dd>${esc(i.a)}</dd></div>`).join('')}</dl>`,
@@ -164,7 +152,6 @@
     return `<section class="sec sec-${s.key}" id="${s.id}" aria-labelledby="${s.id}-h">${head}${lead}${blocks[s.key](s)}</section>`;
   }).join('') + `
     <div class="kp-next rv">
-      <p>Ниже похожие проекты WhiteCode и заявка. Текст для WhatsApp мы подставим сами: что вы открыли в демо и что хотите обсудить.</p>
       <div class="kp-next-btns">
         <button type="button" class="btn btn-accent btn-sm" data-nav="request">Оставить заявку</button>
         <button type="button" class="tlink" data-nav="cases">Похожие проекты</button>
@@ -189,7 +176,7 @@
   const label = (t) => ST.tagLabels[t] || t;
   const sharedAll = [...new Set(picked.flatMap((x) => x.shared))].slice(0, 4).map(label);
   $('#casesWhy').textContent = sharedAll.length
-    ? `Мы делали проекты с теми же задачами: ${andList(sharedAll)}.`
+    ? `Те же задачи: ${andList(sharedAll.slice(0, 3))}.`
     : 'Проекты студии, близкие по масштабу.';
   $('#caseList').innerHTML = picked.map(({ c, shared }, i) => `
     <article class="case rv" style="--i:${i}">
@@ -197,20 +184,19 @@
       <div class="case-body">
         <p class="case-name">${esc(c.name)}</p>
         <h3>${esc(c.title)}</h3>
-        <p class="case-text">${esc(c.text)}</p>
         ${shared.length ? `<p class="case-shared">Как у вас: ${esc(andList(shared.slice(0, 2).map(label)))}</p>` : ''}
       </div>
     </article>`).join('');
   // studio claims read as one sentence, not a row of big numbers
   const [f1, f2, f3] = ST.facts;
-  $('#studioLine').innerHTML = `Мы ${esc(f1.label)} ${esc(f1.value)}. На код даём гарантию ${esc(f2.value)}, после запуска ${esc(f3.value)} поддерживаем проект. Среди клиентов банки, телеком и производители:`;
+  $('#studioLine').innerHTML = `${esc(f1.value)} ${esc(f1.label)}. Среди клиентов:`;
   $('#logos').innerHTML = ST.logos.map((l, i) => `<img class="rv" style="--i:${i}" src="assets/logos/${esc(l.file)}" alt="${esc(l.name)}" height="24" loading="lazy" decoding="async">`).join('');
 
   /* ---------- final request → WhatsApp ---------- */
   // [words] in the title get the white brand marker
   $('#finalTitle').innerHTML = esc(D.final.title).replace(/\[([^\]]+)\]/, '<em>$1</em>');
   $('#finalText').textContent = D.final.text;
-  $('#finalSteps').innerHTML = D.final.steps.map((s, i) => `<li class="rv" style="--i:${i}"><span>${i + 1}</span>${esc(s)}</li>`).join('');
+  $('#finalSteps').innerHTML = (D.final.steps || []).map((s, i) => `<li class="rv" style="--i:${i}"><span>${i + 1}</span>${esc(s)}</li>`).join('');
   $('#mgrAva').textContent = M.name.slice(0, 1);
   $('#mgrName').textContent = M.name;
   $('#mgrRole').textContent = M.role;
@@ -221,10 +207,9 @@
 
   // [key, chip label, form used after "Хотим обсудить:"]
   const TOPICS = [
-    ['terms', 'Сроки и этапы', 'сроки и этапы'],
-    ['price', 'Стоимость и оплата', 'стоимость и оплату'],
+    ['terms', 'Сроки', 'сроки'],
+    ['price', 'Оплата', 'оплату'],
     ['demo', 'Демо на созвоне', 'демо на созвоне'],
-    ['integrations', 'Подключение iiko и оплаты', 'подключение iiko и оплаты'],
   ];
   $('#topicList').innerHTML = TOPICS.map(([k, l], i) => `<label class="topic"><input type="checkbox" name="topic" value="${k}" ${i < 2 ? 'checked' : ''}><span>${esc(l)}</span></label>`).join('');
 
@@ -236,14 +221,16 @@
     const seen = scenarios.filter((_, i) => visited.has(i)).map((x) => x.title.toLowerCase());
     const lines = [
       `Здравствуйте, ${M.name}!${name ? ` Меня зовут ${name}.` : ''}`,
-      `Посмотрели предложение ${ST.name} для ${D.client.name}: ${D.project.kind}, ${money(total)}, ${weeksTotal} ${weeksWord(weeksTotal)}.`,
+      `Смотрели КП ${ST.name} для ${D.client.name}: ${money(total)}, ${weeksTotal} ${weeksWord(weeksTotal)}.`,
       seen.length ? `В демо открыли: ${seen.join(', ')}.` : '',
       topics.length ? `Хотим обсудить: ${topics.join(', ')}.` : 'Хотим обсудить запуск.',
-      `Предложение: ${pageUrl()}`,
+      pageUrl(),
     ];
     return lines.filter(Boolean).join('\n');
   }
   function renderPreview() { $('#waPreview').textContent = waMessage(); }
+  const waBox = $('#waBox');
+  if (waBox) waBox.open = !MOBILE.matches;
   $('#reqForm').addEventListener('input', renderPreview);
   $('#reqForm').addEventListener('change', renderPreview);
   $('#reqForm').addEventListener('submit', (e) => {
@@ -255,7 +242,7 @@
     if (!win) location.href = url;
     const btn = e.submitter || $('#reqForm button[type="submit"]');
     btn.classList.add('sent');
-    toast(`Открываем WhatsApp. Если не открылся, напишите на ${M.whatsappLabel}`);
+    toast(`Не открылся WhatsApp? Номер ${M.whatsappLabel}`);
   });
   $('#copyPhone').addEventListener('click', () => copy(`+${M.whatsapp}`, 'Номер скопирован'));
 
@@ -388,7 +375,7 @@
         visited.add(i);
         track('scenario_done', { i });
         try { sessionStorage.setItem(TOUR_KEY, JSON.stringify([...visited])); } catch { /* ignore */ }
-        if (visited.size === scenarios.length) toast('Демо пройдено. Ниже похожие проекты и заявка');
+        if (visited.size === scenarios.length) toast('Демо пройдено');
       }
     });
     renderTour();
