@@ -162,27 +162,9 @@
   const navItems = [['s-demo', 'Демо'], ['s-scope', 'Состав'], ['s-stages', 'Этапы'], ['s-pricing', 'Стоимость']];
   $('#topnav').innerHTML = navItems.map(([id, l]) => `<a href="#${id}" data-nav="${id}">${l}</a>`).join('');
 
-  /* ---------- related cases: shared tags, earlier project tags weigh more ---------- */
-  const myTags = D.project.tags;
-  const weight = (t) => { const i = myTags.indexOf(t); return i < 0 ? 0 : myTags.length - i; };
-  const ranked = ST.cases
-    .map((c, idx) => {
-      const shared = myTags.filter((t) => c.tags.includes(t));
-      return { c, idx, shared, score: shared.reduce((s, t) => s + weight(t), 0) };
-    })
-    .sort((a, b) => b.score - a.score || a.idx - b.idx);
-  let picked = ranked.filter((x) => x.shared.length).slice(0, 3);
-  if (picked.length < 3) picked = picked.concat(ranked.filter((x) => !picked.includes(x)).slice(0, 3 - picked.length));
-  const andList = (arr) => (arr.length < 2 ? arr.join('') : `${arr.slice(0, -1).join(', ')} и ${arr[arr.length - 1]}`);
-  const label = (t) => ST.tagLabels[t] || t;
-  // a compact strip: small cards that open the case on whitecode.kz
-  $('#caseList').innerHTML = picked.map(({ c }) => `
-    <li class="cm"><a href="${esc(c.url || ST.casesUrl || ST.site)}" target="_blank" rel="noopener">
-      <img src="assets/cases/${esc(c.cover)}" alt="" width="88" height="60" loading="lazy" decoding="async">
-      <span class="cm-txt"><span class="cm-name">${esc(c.name)}</span><span class="cm-title">${esc(c.title)}</span></span>
-      ${icon('open', 'ico cm-go')}
-    </a></li>`).join('');
-  // one studio fact under the strip title
+  /* ---------- our work: one line and a link to the site ----------
+     Similar projects are not listed: the manager names them on the call when
+     they really match, and a loose match reads as a misunderstood brief. */
   const studioLine = $('#studioLine');
   if (studioLine && ST.facts && ST.facts[0]) studioLine.textContent = `${ST.facts[0].value} ${ST.facts[0].label}`;
   const casesAll = $('#casesAll');
@@ -190,7 +172,6 @@
     casesAll.href = ST.casesUrl || ST.site;
     casesAll.addEventListener('click', () => track('cases_site'));
   }
-  $$('.cm a').forEach((a) => a.addEventListener('click', () => track('case_open', { href: a.href })));
 
   /* ---------- final request → WhatsApp ---------- */
   // [words] in the title get the white brand marker
@@ -587,7 +568,7 @@
   }
   const FX = [
     ['fx-words', '.sec-h, .cases-h, #finalTitle'],
-    ['fx-focus', '.ints, .note, .fine, .incl li, .tour, .cases-why, .studio-line, .final-text, .case-shared, .g-axis, .cmini-head'],
+    ['fx-focus', '.ints, .note, .fine, .incl li, .tour, .cases-why, .studio-line, .final-text, .case-shared, .g-axis, .works-txt, .works-btn'],
     ['fx-slide', '.scn li, .oq li, .faq-i, .pays li, .cm'],
     ['fx-wipe', '.case h3'],
     ['fx-pop', '.mod'],

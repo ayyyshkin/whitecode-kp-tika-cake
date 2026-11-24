@@ -1052,3 +1052,23 @@ svg { display: block; }
 /* studio fact under the similar projects title */
 .cmini-head { align-items: end; }
 .cmini-sub { margin-top: 4px; font-size: 14.5px; color: var(--ink-3); }
+
+/* ===================================================================
+   OUR WORK: one calm line with a link to whitecode.kz, in place of
+   similar projects
+   =================================================================== */
+.works {
+  max-width: 1440px; margin: 0 auto; padding: clamp(48px, 8vh, 80px) var(--gutter);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px;
+}
+.works-txt { max-width: 40ch; }
+.works h2 { font: 400 clamp(24px, 2.2vw, 32px)/1.12 var(--f-display); letter-spacing: -.015em; text-wrap: balance; }
+.works-sub { margin-top: 8px; font-size: 15px; color: var(--ink-3); }
+.works-btn { gap: 8px; min-height: 48px; }
+.works-btn .ico { width: 16px; height: 16px; flex: none; stroke-width: 2; }
+
+@media (max-width: 960px) {
+  .works { padding: 56px var(--gutter) 48px; gap: 18px; }
+  .works h2 { font-size: 24px; }
+  .works-btn { width: 100%; min-height: 52px; }
+}
