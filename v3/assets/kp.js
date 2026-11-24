@@ -31,6 +31,7 @@
     chef: '<path d="M7 14a4 4 0 0 1-.6-7.9 5.5 5.5 0 0 1 11.2 0A4 4 0 0 1 17 14"/><path d="M7 14h10v6H7z"/>',
     chart: '<path d="M4 20h16"/><path d="M7 16v-5M12 16V6M17 16v-8"/>',
     arrow: '<path d="M5 12h14m-6-6 6 6-6 6"/>',
+    open: '<path d="M7 17 17 7M9 7h8v8"/>',
     down: '<path d="M12 5v14m-6-6 6 6 6-6"/>',
   };
   const icon = (name, cls = 'ico') => (ICONS[name] ? `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name]}</svg>` : '');
@@ -71,7 +72,7 @@
   // cta.gallery: the label stays, an arrow travels on hover
   $('[data-demo-start]').innerHTML = `<span>${esc(D.hero.cta || 'Пройти демо')}</span><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>`;
 
-  const counter = (value, fmt) => `<span class="cnt" data-to="${value}" data-fmt="${fmt}"><span class="cnt-final" aria-hidden="true">${fmtCount(value, fmt)}</span><span class="cnt-live" aria-hidden="true">${fmtCount(value, fmt)}</span></span>`;
+  const counter = (value, fmt) => `<span class="cnt" data-to="${value}" data-fmt="${fmt}"><span class="sr">${fmtCount(value, fmt)}</span><span class="cnt-final" aria-hidden="true">${fmtCount(value, fmt)}</span><span class="cnt-live" aria-hidden="true">${fmtCount(value, fmt)}</span></span>`;
   function fmtCount(v, fmt) {
     if (fmt === 'money') return money(v);
     if (fmt === 'weeks') return `${v} ${weeksWord(v)}`;
@@ -79,7 +80,7 @@
     return NF.format(v);
   }
   // price and timing read as one sentence, not as a stats row
-  $('#heroTerms').textContent = `${money(total)} за ${weeksTotal} ${weeksWord(weeksTotal)}. Цена до ${dateRu(D.validUntil)}.`;
+  $('#heroTerms').innerHTML = `${counter(total, 'money')} за ${weeksTotal} ${weeksWord(weeksTotal)}. Цена до ${dateRu(D.validUntil)}.`;
 
   // hero object: a real product photo from the client's materials
   $('#heroArt').innerHTML = '<img src="assets/photos/hero-strawberry.webp" alt="Торт «Клубничное облако» Tika Cake" width="1400" height="934" fetchpriority="high" decoding="async">';
@@ -111,7 +112,7 @@
         <li class="mod ${rv()}">
           <h3>${esc(m.title)}</h3>
           <p class="mod-text">${esc(m.text)}</p>
-          ${demoLink(m.route)}
+          <button type="button" class="demo-link" data-route="${esc(m.route)}" aria-label="Показать в демо: ${esc(m.title)}"><span class="dl-l">Показать в демо</span>${icon('open', 'ico dl-i')}</button>
         </li>`).join('')}
       </ul>
       <p class="ints ${rv()}">Подключим ${s.integrations.map((i) => `<b>${esc(i.name || i)}</b>`).join(', ')}.</p>`,
@@ -123,7 +124,7 @@
         const width = (x.weeks / weeksTotal) * 100;
         const from = start + 1;
         start += x.weeks;
-        return `<li class="g-row"><span class="g-name">${esc(x.name)}</span><div class="g-track"><i class="g-bar" style="left:${left}%;width:${width}%;--d:${i}"></i><em class="g-w" style="left:calc(${left + width}% + 8px)"><span class="sr">${from === start ? 'неделя' : 'недели'} </span>${from === start ? from : `${from}-${start}`}</em></div></li>`;
+        return `<li class="g-row" style="--d:${i}"><span class="g-name">${esc(x.name)}</span><div class="g-track"><i class="g-bar" style="left:${left}%;width:${width}%;--d:${i}"></i><em class="g-w" style="left:calc(${left + width}% + 8px)"><span class="sr">${from === start ? 'неделя' : 'недели'} </span>${from === start ? from : `${from}-${start}`}</em></div></li>`;
       }).join('');
       return `
       <ol class="gantt ${rv()}">${rows}</ol><p class="g-axis ${rv()}" aria-hidden="true">недели</p>`;
@@ -131,7 +132,7 @@
 
     pricing: (s) => `
       <p class="price-big ${rv()}">${counter(total, 'money')}</p>
-      <ol class="pays ${rv()}">${payments.map((p) => `<li><span class="pay-amt">${money((total * p.pay) / 100)}</span><span class="pay-when">${p.pay}% ${esc(p.payWhen)}</span></li>`).join('')}</ol>
+      <ol class="pays ${rv()}">${payments.map((p) => `<li><span class="pay-amt">${counter((total * p.pay) / 100, 'money')}</span><span class="pay-when">${p.pay}% ${esc(p.payWhen)}</span></li>`).join('')}</ol>
       <ul class="incl ${rv()}">${s.includes.map((x) => `<li>${CHECK}<span>${esc(x)}</span></li>`).join('')}</ul>
       ${s.extras ? `<p class="fine ${rv()}">Отдельно: ${esc(s.extras)}.</p>` : ''}`,
 
@@ -139,7 +140,7 @@
       <ul class="oq">${s.items.map((i) => `<li class="${rv()}">${esc(i.what || i)}</li>`).join('')}</ul>`,
 
     faq: (s) => `
-      <dl class="faq">${s.items.map((i) => `<div class="${rv()}"><dt>${esc(i.q)}</dt><dd>${esc(i.a)}</dd></div>`).join('')}</dl>`,
+      <div class="faq">${s.items.map((i) => `<details class="faq-i ${rv()}"><summary>${esc(i.q)}</summary><p>${esc(i.a)}</p></details>`).join('')}</div>`,
   };
 
   const order = ['demo', 'scope', 'stages', 'pricing', 'open', 'faq'];
@@ -157,6 +158,8 @@
         <button type="button" class="tlink" data-nav="cases">Похожие проекты</button>
       </div>
     </div>`;
+
+  if (!MOBILE.matches) $$('.faq-i').forEach((d) => { d.open = true; });
 
   const navItems = [['s-demo', 'Демо'], ['s-scope', 'Состав'], ['s-stages', 'Этапы'], ['s-pricing', 'Стоимость'], ['cases', 'Кейсы']];
   $('#topnav').innerHTML = navItems.map(([id, l]) => `<a href="#${id}" data-nav="${id}">${l}</a>`).join('');
@@ -179,14 +182,21 @@
     ? `Те же задачи: ${andList(sharedAll.slice(0, 3))}.`
     : 'Проекты студии, близкие по масштабу.';
   $('#caseList').innerHTML = picked.map(({ c, shared }, i) => `
-    <article class="case rv" style="--i:${i}">
+    <article class="case rv${c.url ? ' has-link' : ''}" style="--i:${i}">
+      ${c.url ? `<a class="case-a" href="${esc(c.url)}" target="_blank" rel="noopener" aria-label="Кейс ${esc(c.name)}: ${esc(c.title)}"></a>` : ''}
       <div class="case-img"><img src="assets/cases/${esc(c.cover)}" alt="${esc(c.name)}: обложка проекта" loading="lazy" decoding="async"></div>
       <div class="case-body">
         <p class="case-name">${esc(c.name)}</p>
         <h3>${esc(c.title)}</h3>
         ${shared.length ? `<p class="case-shared">Как у вас: ${esc(andList(shared.slice(0, 2).map(label)))}</p>` : ''}
+        ${c.url ? `<span class="case-more" aria-hidden="true">Открыть кейс${icon('open', 'ico')}</span>` : ''}
       </div>
     </article>`).join('');
+  if (ST.casesUrl) {
+    $('#caseList').insertAdjacentHTML('afterend', `<p class="cases-all rv"><a class="btn btn-line" href="${esc(ST.casesUrl)}" target="_blank" rel="noopener">Смотреть кейсы${icon('open', 'ico')}</a></p>`);
+    $('.cases-all a').addEventListener('click', () => track('cases_site'));
+  }
+  $$('.case-a').forEach((a) => a.addEventListener('click', () => track('case_open', { href: a.href })));
   // studio claims read as one sentence, not a row of big numbers
   const [f1, f2, f3] = ST.facts;
   $('#studioLine').innerHTML = `${esc(f1.value)} ${esc(f1.label)}. Среди клиентов:`;
@@ -554,13 +564,70 @@
     // a timer, not rAF: background tabs skip rAF and the hero would stay hidden
     setTimeout(() => {
       root.classList.add('hero-in');
-      setTimeout(() => $$('#heroPlate .cnt').forEach(countUp), 520);
+      setTimeout(() => $$('#heroTerms .cnt').forEach(countUp), 520);
     }, 60);
   } else {
     laptop.classList.add('open');
   }
 
+  /* ---------- text reveals ----------
+     headings rise word by word out of a mask, short lines come into focus,
+     list rows slide in, case titles wipe in, module tiles settle, numbers count.
+     Reduced motion keeps only an opacity cross-fade. */
+  function splitWords(el) {
+    let n = 0;
+    const walk = (node) => [...node.childNodes].forEach((c) => {
+      if (c.nodeType === 1) { walk(c); return; }
+      if (c.nodeType !== 3 || !c.textContent.trim()) return;
+      const frag = document.createDocumentFragment();
+      c.textContent.split(/([ \n\t]+)/).forEach((part) => {
+        if (!part) return;
+        if (!part.trim()) { frag.append(part); return; }
+        const w = document.createElement('span');
+        w.className = 'sw';
+        const inner = document.createElement('span');
+        inner.style.setProperty('--w', n++);
+        inner.textContent = part;
+        w.append(inner);
+        frag.append(w);
+      });
+      node.replaceChild(frag, c);
+    });
+    walk(el);
+  }
+  const FX = [
+    ['fx-words', '.sec-h, .cases-h, #finalTitle'],
+    ['fx-focus', '.ints, .note, .fine, .incl li, .tour, .cases-why, .studio-line, .final-text, .case-shared, .g-axis'],
+    ['fx-slide', '.scn li, .oq li, .faq-i, .pays li'],
+    ['fx-wipe', '.case h3'],
+    ['fx-pop', '.mod'],
+    ['fx-gantt', '.gantt'],
+  ];
+  if ('IntersectionObserver' in window) {
+    root.classList.add(REDUCED.matches ? 'tx-lite' : 'tx');
+    FX.forEach(([cls, sel]) => $$(sel).forEach((el) => {
+      el.classList.add('fx', cls);
+      // stagger inside a list by position, not by page order
+      const idx = el.parentElement ? [...el.parentElement.children].indexOf(el) : 0;
+      el.style.setProperty('--fi', Math.min(idx, 5));
+      if (cls === 'fx-words') splitWords(el);
+    }));
+    const owners = new Map(); // observed box: the elements it reveals
+    const tio = new IntersectionObserver((entries) => entries.forEach((en) => {
+      if (!en.isIntersecting) return;
+      (owners.get(en.target) || []).forEach((el) => el.classList.add('tx-in'));
+      tio.unobserve(en.target);
+    }), { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+    $$('.fx').forEach((el) => {
+      // a fully clipped element never intersects, so a wipe watches its parent
+      const box = el.classList.contains('fx-wipe') ? el.parentElement : el;
+      if (!owners.has(box)) { owners.set(box, []); tio.observe(box); }
+      owners.get(box).push(el);
+    });
+  }
+
   window.addEventListener('beforeprint', () => {
+    $$('.fx').forEach((el) => el.classList.add('tx-in'));
     $$('.rv').forEach((el) => el.classList.add('in'));
     $$('.faq details').forEach((d) => { d.dataset.wasOpen = d.open; d.open = true; });
   });

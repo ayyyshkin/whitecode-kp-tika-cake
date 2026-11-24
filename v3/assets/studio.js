@@ -11,6 +11,7 @@ window.STUDIO = {
   name: 'WhiteCode',
   site: 'https://whitecode.kz',
   siteLabel: 'whitecode.kz',
+  casesUrl: 'https://whitecode.kz/#cases',
   address: 'Алматы, Сатпаева 4а, 5 этаж',
 
   manager: {
@@ -53,13 +54,13 @@ window.STUDIO = {
 
   cases: [
     {
-      id: 'hiba', name: 'Hiba', logo: 'hiba', cover: 'hiba-cover.webp', tint: '#4aa8f0',
+      id: 'hiba', url: 'https://whitecode.kz/kejsy/hiba', name: 'Hiba', logo: 'hiba', cover: 'hiba-cover.webp', tint: '#4aa8f0',
       title: 'Маркетплейс халяльной продукции',
       text: 'UX/UI-дизайн и платформа, которая связывает производителей, поставщиков и покупателей. Каталог товаров и оформление заказов.',
       tags: ['marketplace', 'ecommerce', 'catalog', 'orders', 'food', 'uxui'],
     },
     {
-      id: 'umarket', name: 'U-Market', logo: null, cover: 'u-market-cover-v1.webp', tint: '#f26a1b',
+      id: 'umarket', url: 'https://whitecode.kz/kejsy/u-market', name: 'U-Market', logo: null, cover: 'u-market-cover-v1.webp', tint: '#f26a1b',
       title: 'B2B-платформа для строительной отрасли',
       text: 'Ассортимент, заказы и работа с корпоративными клиентами в одной системе. Ключевые процессы продаж автоматизированы.',
       tags: ['marketplace', 'b2b', 'ecommerce', 'catalog', 'orders', 'automation', 'erp'],
@@ -71,7 +72,7 @@ window.STUDIO = {
       tags: ['telecom', 'automation', 'orders', 'erp', 'integration', 'enterprise'],
     },
     {
-      id: 'raiffeisen', name: 'Raiffeisen Bank', logo: 'raiffeisen', cover: 'raiffeisen-cover-v1.webp', tint: '#f5d90a',
+      id: 'raiffeisen', url: 'https://whitecode.kz/kejsy/raiffeisen', name: 'Raiffeisen Bank', logo: 'raiffeisen', cover: 'raiffeisen-cover-v1.webp', tint: '#f5d90a',
       title: 'Интеграционная платформа для банковских сервисов',
       text: 'IBM DataPower для безопасного доступа к внутренним системам банка, балансировки нагрузки и защиты данных.',
       tags: ['bank', 'fintech', 'integration', 'security', 'enterprise'],
@@ -95,7 +96,7 @@ window.STUDIO = {
       tags: ['education', 'corporate', 'automation', 'uxui'],
     },
     {
-      id: 'art', name: 'ART.KZ', logo: 'artkz', cover: 'art-kz-cover-v1.webp', tint: '#1e4a63',
+      id: 'art', url: 'https://whitecode.kz/kejsy/art-kz', name: 'ART.KZ', logo: 'artkz', cover: 'art-kz-cover-v1.webp', tint: '#1e4a63',
       title: 'Платформа для цифрового искусства',
       text: 'Интерфейс для показа и управления арт-контентом с упором на подачу работ.',
       tags: ['content', 'uxui', 'catalog'],

@@ -747,3 +747,169 @@ svg { display: block; }
   .hero-art { top: auto; transform: none; }
   .foot-row { gap: 0; }
 }
+
+/* ===================================================================
+   TEXT REVEALS + SHORTER PHONE
+   Each kind of text has its own entrance: headings rise word by word out
+   of a mask, short lines come into focus (opacity, 4px blur, 12px rise,
+   300ms ease-out, 100ms apart), rows slide in, case titles wipe in,
+   module tiles settle, numbers count up. Reduced motion: opacity only.
+   =================================================================== */
+.dl-i { display: none; width: 18px; height: 18px; }
+
+/* faq: a disclosure, open on desktop, folded on phones */
+.faq { gap: 0; }
+.faq-i + .faq-i { border-top: 1px solid var(--line); }
+.faq-i summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px;
+  font-weight: 600; cursor: pointer; list-style: none; -webkit-tap-highlight-color: transparent;
+}
+.faq-i summary::-webkit-details-marker { display: none; }
+.faq-i summary::after {
+  content: ""; flex: none; width: 7px; height: 7px; margin-right: 4px;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg); transition: transform .25s var(--ease-out);
+}
+.faq-i[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+.faq-i summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 6px; }
+.faq-i p { margin: 0 0 14px; color: var(--ink-2); text-wrap: pretty; }
+
+/* headings: words rise out of a mask */
+.fx-words .sw { display: inline-block; vertical-align: top; }
+.tx .fx-words.rv, .tx-lite .fx-words.rv { opacity: 1; transform: none; }
+.tx .fx-words .sw { overflow: clip; padding: .06em 0 .14em; margin: -.06em 0 -.14em; }
+.tx .fx-words .sw > span { display: inline-block; transition: transform .7s var(--ease-out) calc(var(--w) * 55ms); }
+.tx .fx.fx-words:not(.tx-in) .sw > span { transform: translateY(110%); }
+
+/* final title: the words rise light, then the white marker draws under them */
+.tx #finalTitle em { transition: color .3s ease-out .6s; }
+.tx #finalTitle em::before { transform-origin: 0 50%; transition: transform .6s var(--ease-out) .45s; }
+.tx #finalTitle:not(.tx-in) em { color: #FFFFFF; }
+.tx #finalTitle:not(.tx-in) em::before { transform: skewX(-8deg) scaleX(0); }
+
+/* short lines come into focus */
+.tx .fx.fx-focus { transition: opacity .3s ease-out, filter .3s ease-out, transform .3s ease-out; transition-delay: .1s; }
+.tx .incl .fx.fx-focus { transition-delay: calc(var(--fi, 0) * 100ms + 100ms); }
+.tx .fx.fx-focus:not(.tx-in) { opacity: 0; filter: blur(4px); transform: translateY(12px); }
+.tx .fx.fx-focus.tx-in { opacity: 1; filter: none; transform: none; }
+
+/* list rows slide in one after another */
+.tx .fx.fx-slide { transition: opacity .4s ease-out, transform .5s var(--ease-out); transition-delay: calc(var(--fi, 0) * 80ms); }
+.tx .fx.fx-slide:not(.tx-in) { opacity: 0; transform: translateX(-16px); }
+.tx .fx.fx-slide.tx-in { opacity: 1; transform: none; }
+
+/* case titles wipe in from the left */
+.tx .fx.fx-wipe { transition: clip-path .7s var(--ease-out) .25s; }
+.tx .fx.fx-wipe:not(.tx-in) { clip-path: inset(-.2em 100% -.2em 0); }
+.tx .fx.fx-wipe.tx-in { clip-path: inset(-.2em 0 -.2em 0); }
+
+/* module tiles settle */
+.tx .fx.fx-pop { transition: opacity .3s ease-out, transform .3s ease-out, scale .15s ease-out; transition-delay: calc(var(--fi, 0) * 60ms), calc(var(--fi, 0) * 60ms), 0s; }
+.tx .fx.fx-pop:not(.tx-in) { opacity: 0; transform: scale(.96); }
+.tx .fx.fx-pop.tx-in { opacity: 1; transform: none; }
+
+/* stage names appear with their bars, week numbers after them */
+.tx .fx-gantt .g-name { transition: opacity .3s ease-out calc(var(--d) * 90ms); }
+.tx .fx-gantt .g-w { transition: opacity .3s ease-out calc(var(--d) * 90ms + 550ms); }
+.tx .fx-gantt:not(.tx-in) .g-name, .tx .fx-gantt:not(.tx-in) .g-w { opacity: 0; }
+
+/* hero: lead, terms and actions arrive 100ms apart after the title */
+.tx .hero-row { opacity: 1; transform: none; transition: none; }
+.tx .hero-row > * { transition: opacity .3s ease-out, filter .3s ease-out, transform .3s ease-out; }
+.tx .hero-row > :nth-child(1) { transition-delay: .5s; }
+.tx .hero-row > :nth-child(2) { transition-delay: .6s; }
+.tx .hero-row > :nth-child(3) { transition-delay: .7s; }
+.tx:not(.hero-in) .hero-row > * { opacity: 0; filter: blur(4px); transform: translateY(12px); }
+
+/* reduced motion: the same order, opacity only */
+.tx-lite .fx { transition: opacity .3s ease-out; }
+.tx-lite .fx:not(.tx-in) { opacity: 0; }
+
+@media print {
+  .fx, .fx .sw > span, .hero-row > * { opacity: 1 !important; transform: none !important; filter: none !important; clip-path: none !important; }
+}
+
+/* phone: fewer words, everything in reach */
+@media (max-width: 960px) {
+  .sec-open, .note, .cases-why, .final-text, .mod-text { display: none; }
+
+  /* modules: a 2-column grid of tiles, the whole tile opens the demo */
+  .mods {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px;
+    overflow: visible; margin: 0; padding: 0; scroll-snap-type: none;
+  }
+  .mod {
+    position: relative; min-height: 76px; padding: 14px 38px 14px 14px; border-radius: 16px; background: var(--surface);
+    transition: scale .15s ease-out; -webkit-tap-highlight-color: transparent;
+  }
+  .mod:active { scale: .96; }
+  .mod h3 { margin: 0; font-size: 15.5px; line-height: 1.25; text-wrap: balance; }
+  .mod .demo-link { position: static; min-height: 0; margin: 0; }
+  .mod .demo-link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+  .mod .demo-link:focus-visible { outline: none; }
+  .mod:has(.demo-link:focus-visible) { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .mod .dl-l { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .mod .dl-i { display: block; position: absolute; top: 14px; right: 12px; color: var(--accent); stroke-width: 2; }
+  .ints { margin-top: 16px; }
+
+  .faq-i p { font-size: 15.5px; }
+  .final { gap: 18px; }
+  .final h2 { margin-bottom: 0; }
+}
+
+/* ===================================================================
+   CASE LINKS + MORE AIR ON PHONES
+   A case with a page on whitecode.kz opens it; one button leads to all
+   cases. Phones get one spacing scale: 64px between sections, 20px under
+   headings, 16px between rows.
+   =================================================================== */
+.case.has-link { position: relative; }
+.case-a { position: absolute; inset: 0; z-index: 2; border-radius: 16px; }
+.case-a:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.case-more {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+  font-weight: 600; font-size: 15px; color: var(--ink);
+  text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 5px;
+  transition: text-underline-offset .2s var(--ease-out), color .15s var(--ease-state);
+}
+.case-more .ico, .cases-all .ico { width: 16px; height: 16px; flex: none; stroke-width: 2; }
+@media (hover: hover) {
+  .case.has-link:hover .case-more { text-underline-offset: 7px; color: var(--accent); }
+}
+.cases-all { margin-top: clamp(28px, 4vw, 44px); }
+.cases-all .btn { gap: 8px; }
+
+@media (max-width: 960px) {
+  /* proposal column */
+  .sec { padding-top: 64px; }
+  .sec + .sec { margin-top: 0; }
+  .sec-h { margin-bottom: 20px; }
+  .tour { margin: -12px 0 14px; }
+  .scn { gap: 6px; }
+  .mods { gap: 10px; }
+  .ints { margin-top: 24px; line-height: 1.6; }
+  .gantt { gap: 16px; }
+  .g-axis { margin-top: 14px; }
+  .price-big { margin: 4px 0 22px; }
+  .pays li { padding: 16px 0 14px; }
+  .incl { margin-top: 26px; gap: 12px; }
+  .fine { margin-top: 18px; line-height: 1.55; }
+  .faq-i summary { min-height: 56px; }
+  .faq-i p { margin-bottom: 18px; line-height: 1.55; }
+
+  /* cases */
+  .cases { padding-top: 88px; }
+  .cases-h { margin-bottom: 24px; }
+  .case-list { gap: 14px; }
+  .case { gap: 14px; }
+  .case-name { margin-bottom: 8px; }
+  .case h3 { margin-bottom: 10px; }
+  .cases-all { margin-top: 24px; }
+  .cases-all .btn { width: 100%; min-height: 52px; }
+  .studio-line { margin-top: 44px; }
+  .logos { margin-top: 20px; }
+
+  /* request */
+  .final { padding-top: 52px; gap: 28px; }
+  .req { gap: 18px; padding: 22px 18px; }
+}
