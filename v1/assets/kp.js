@@ -182,6 +182,9 @@
       <span class="cm-txt"><span class="cm-name">${esc(c.name)}</span><span class="cm-title">${esc(c.title)}</span></span>
       ${icon('open', 'ico cm-go')}
     </a></li>`).join('');
+  // one studio fact under the strip title
+  const studioLine = $('#studioLine');
+  if (studioLine && ST.facts && ST.facts[0]) studioLine.textContent = `${ST.facts[0].value} ${ST.facts[0].label}`;
   const casesAll = $('#casesAll');
   if (casesAll) {
     casesAll.href = ST.casesUrl || ST.site;

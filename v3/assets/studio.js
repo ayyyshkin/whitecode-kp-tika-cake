@@ -26,7 +26,7 @@ window.STUDIO = {
 
   // Claims published on whitecode.kz
   facts: [
-    { value: '8 лет', label: 'делаем сайты, сервисы и интеграции' },
+    { value: '8 лет', label: 'на рынке IT-разработки' },
     { value: '6 месяцев', label: 'гарантия на код после запуска' },
     { value: '60 дней', label: 'поддержка после запуска' },
   ],
