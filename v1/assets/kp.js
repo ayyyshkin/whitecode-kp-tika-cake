@@ -154,13 +154,12 @@
     <div class="kp-next rv">
       <div class="kp-next-btns">
         <button type="button" class="btn btn-accent btn-sm" data-nav="request">Оставить заявку</button>
-        <button type="button" class="tlink" data-nav="cases">Похожие проекты</button>
       </div>
     </div>`;
 
   if (!MOBILE.matches) $$('.faq-i').forEach((d) => { d.open = true; });
 
-  const navItems = [['s-demo', 'Демо'], ['s-scope', 'Состав'], ['s-stages', 'Этапы'], ['s-pricing', 'Стоимость'], ['cases', 'Кейсы']];
+  const navItems = [['s-demo', 'Демо'], ['s-scope', 'Состав'], ['s-stages', 'Этапы'], ['s-pricing', 'Стоимость']];
   $('#topnav').innerHTML = navItems.map(([id, l]) => `<a href="#${id}" data-nav="${id}">${l}</a>`).join('');
 
   /* ---------- related cases: shared tags, earlier project tags weigh more ---------- */
@@ -176,30 +175,19 @@
   if (picked.length < 3) picked = picked.concat(ranked.filter((x) => !picked.includes(x)).slice(0, 3 - picked.length));
   const andList = (arr) => (arr.length < 2 ? arr.join('') : `${arr.slice(0, -1).join(', ')} и ${arr[arr.length - 1]}`);
   const label = (t) => ST.tagLabels[t] || t;
-  const sharedAll = [...new Set(picked.flatMap((x) => x.shared))].slice(0, 4).map(label);
-  $('#casesWhy').textContent = sharedAll.length
-    ? `Те же задачи: ${andList(sharedAll.slice(0, 3))}.`
-    : 'Проекты студии, близкие по масштабу.';
-  $('#caseList').innerHTML = picked.map(({ c, shared }, i) => `
-    <article class="case rv${c.url ? ' has-link' : ''}" style="--i:${i}">
-      ${c.url ? `<a class="case-a" href="${esc(c.url)}" target="_blank" rel="noopener" aria-label="Кейс ${esc(c.name)}: ${esc(c.title)}"></a>` : ''}
-      <div class="case-img"><img src="assets/cases/${esc(c.cover)}" alt="${esc(c.name)}: обложка проекта" loading="lazy" decoding="async"></div>
-      <div class="case-body">
-        <p class="case-name">${esc(c.name)}</p>
-        <h3>${esc(c.title)}</h3>
-        ${shared.length ? `<p class="case-shared">Как у вас: ${esc(andList(shared.slice(0, 2).map(label)))}</p>` : ''}
-        ${c.url ? `<span class="case-more" aria-hidden="true">Открыть кейс${icon('open', 'ico')}</span>` : ''}
-      </div>
-    </article>`).join('');
-  if (ST.casesUrl) {
-    $('#caseList').insertAdjacentHTML('afterend', `<p class="cases-all rv"><a class="btn btn-line" href="${esc(ST.casesUrl)}" target="_blank" rel="noopener">Смотреть кейсы${icon('open', 'ico')}</a></p>`);
-    $('.cases-all a').addEventListener('click', () => track('cases_site'));
+  // a compact strip: small cards that open the case on whitecode.kz
+  $('#caseList').innerHTML = picked.map(({ c }) => `
+    <li class="cm"><a href="${esc(c.url || ST.casesUrl || ST.site)}" target="_blank" rel="noopener">
+      <img src="assets/cases/${esc(c.cover)}" alt="" width="88" height="60" loading="lazy" decoding="async">
+      <span class="cm-txt"><span class="cm-name">${esc(c.name)}</span><span class="cm-title">${esc(c.title)}</span></span>
+      ${icon('open', 'ico cm-go')}
+    </a></li>`).join('');
+  const casesAll = $('#casesAll');
+  if (casesAll) {
+    casesAll.href = ST.casesUrl || ST.site;
+    casesAll.addEventListener('click', () => track('cases_site'));
   }
-  $$('.case-a').forEach((a) => a.addEventListener('click', () => track('case_open', { href: a.href })));
-  // studio claims read as one sentence, not a row of big numbers
-  const [f1, f2, f3] = ST.facts;
-  $('#studioLine').innerHTML = `${esc(f1.value)} ${esc(f1.label)}. Среди клиентов:`;
-  $('#logos').innerHTML = ST.logos.map((l, i) => `<img class="rv" style="--i:${i}" src="assets/logos/${esc(l.file)}" alt="${esc(l.name)}" height="24" loading="lazy" decoding="async">`).join('');
+  $$('.cm a').forEach((a) => a.addEventListener('click', () => track('case_open', { href: a.href })));
 
   /* ---------- final request → WhatsApp ---------- */
   // [words] in the title get the white brand marker
@@ -596,8 +584,8 @@
   }
   const FX = [
     ['fx-words', '.sec-h, .cases-h, #finalTitle'],
-    ['fx-focus', '.ints, .note, .fine, .incl li, .tour, .cases-why, .studio-line, .final-text, .case-shared, .g-axis'],
-    ['fx-slide', '.scn li, .oq li, .faq-i, .pays li'],
+    ['fx-focus', '.ints, .note, .fine, .incl li, .tour, .cases-why, .studio-line, .final-text, .case-shared, .g-axis, .cmini-head'],
+    ['fx-slide', '.scn li, .oq li, .faq-i, .pays li, .cm'],
     ['fx-wipe', '.case h3'],
     ['fx-pop', '.mod'],
     ['fx-gantt', '.gantt'],
@@ -618,8 +606,9 @@
       tio.unobserve(en.target);
     }), { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
     $$('.fx').forEach((el) => {
-      // a fully clipped element never intersects, so a wipe watches its parent
-      const box = el.classList.contains('fx-wipe') ? el.parentElement : el;
+      // a fully clipped element never intersects, so a wipe watches its parent;
+      // carousel cards arrive together when the strip comes into view
+      const box = el.classList.contains('fx-wipe') || el.classList.contains('cm') ? el.parentElement : el;
       if (!owners.has(box)) { owners.set(box, []); tio.observe(box); }
       owners.get(box).push(el);
     });
