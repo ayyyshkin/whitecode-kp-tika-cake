@@ -167,7 +167,11 @@
      Similar projects are not listed: the manager names them on the call when
      they really match, and a loose match reads as a misunderstood brief. */
   const studioLine = $('#studioLine');
-  if (studioLine && ST.facts && ST.facts[0]) studioLine.textContent = `${ST.facts[0].value} ${ST.facts[0].label}`;
+  if (studioLine && ST.facts && ST.facts[0]) {
+    const cl = ST.clients || [];
+    const names = cl.length > 1 ? `${cl.slice(0, -1).join(', ')} и ${cl[cl.length - 1]}` : cl.join('');
+    studioLine.textContent = `${ST.facts[0].value} ${ST.facts[0].label}.${names ? ` Среди клиентов ${names}.` : ''}`;
+  }
   const casesAll = $('#casesAll');
   if (casesAll) {
     casesAll.href = ST.casesUrl || ST.site;

@@ -103,6 +103,9 @@ window.STUDIO = {
     },
   ],
 
+  // named under the link to our work, all published on whitecode.kz
+  clients: ['Raiffeisen Bank', 'Sberbank', 'Telekom Srbija'],
+
   logos: [
     { file: 'raiffeisen.webp', name: 'Raiffeisen Bank' },
     { file: 'sber.webp', name: 'Sberbank' },
